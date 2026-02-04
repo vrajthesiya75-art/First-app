@@ -1,0 +1,467 @@
+/* ==========================================================================
+   Guardiansman Security Agency - index.css (2025/2026 optimized)
+   Fully responsive • Fixed navbar • Full-viewport hero • No content cropping
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background-color: #0a1f44;
+  min-height: 100vh;
+  padding-top: var(--navbar-height, 80px); /* Prevents content from being hidden under fixed navbar */
+}
+
+/* ────────────────────────────────────────────────
+   Custom Properties
+   ──────────────────────────────────────────────── */
+:root {
+  --primary:      #0a1f44;     /* deep navy */
+  --primary-dark: #071531;
+  --accent:       #c8102e;     /* security red */
+  --accent-dark:  #a00d25;
+  --dark:         #111111;
+  --light-gray:   #e9ecef;
+
+  --navbar-height: 80px;       /* Change this if your navbar is taller/shorter */
+}
+
+/* ────────────────────────────────────────────────
+   Typography (fluid scaling)
+   ──────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.display-4 {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: #d0d0d0;
+  margin-bottom: 2rem;
+}
+
+/* ────────────────────────────────────────────────
+   Fixed Navbar (top of every page)
+   ──────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--primary);
+  padding: 1rem 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--navbar-height);
+}
+
+.logo img {
+  height: 48px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.links a:hover,
+.links a.active {
+  color: var(--accent);
+}
+
+.links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  bottom: -6px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.links a:hover::after,
+.links a.active::after {
+  width: 100%;
+}
+
+/* ────────────────────────────────────────────────
+   Full-viewport Hero (Home page)
+   ──────────────────────────────────────────────── */
+.hero {
+  height: 100vh;
+  min-height: 700px;
+  width: 100%;
+  background: linear-gradient(
+      rgba(10, 31, 68, 0.82),
+      rgba(10, 31, 68, 0.78)
+    ),
+    url('/home-1.jpg') center/cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+}
+
+/* Container inside hero */
+.hero .container {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 5%;
+}
+
+/* Hero text */
+.hero h1 {
+  text-shadow: 0 4px 16px rgba(0,0,0,0.6);
+}
+
+.check-red {
+  position: relative;
+  padding-left: 2.2rem;
+  color: #f0f0f0;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.check-red::before {
+  content: "✔";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.btn-hero {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 1rem 2.8rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+}
+
+.btn-hero:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(200, 16, 46, 0.55);
+}
+
+/* Hero image */
+.hero img {
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  border: 6px solid rgba(255,255,255,0.08);
+  max-width: 100%;
+  height: auto;
+}
+
+/* ────────────────────────────────────────────────
+   Footer
+   ──────────────────────────────────────────────── */
+footer {
+  background-color: var(--dark);
+  color: #aaa;
+  text-align: center;
+  position: relative;
+  padding: 2.5rem 1rem;
+  font-size: 0.95rem;
+  margin-top: auto;
+}
+
+/* ────────────────────────────────────────────────
+   404 Page
+   ──────────────────────────────────────────────── */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.not-found h1 {
+  font-size: clamp(6rem, 20vw, 12rem);
+  color: var(--accent);
+  line-height: 0.85;
+  margin-bottom: 1rem;
+}
+
+.not-found h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: 2rem;
+}
+
+.not-found .btn {
+  background: var(--accent);
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.not-found .btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-4px);
+}
+/* Container for scroll on small screens */
+.table-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Main table */
+.user-table {
+  width: 100%;
+  min-width: 700px;                /* prevents columns from collapsing too much */
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #1a2b5f;             /* solid dark background - better contrast */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Table header */
+.user-table thead th {
+  background-color: #071248;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+  text-align: left;
+  padding: 16px 18px;
+  border-bottom: 2px solid #071248;
+}
+
+/* Table body cells */
+.user-table tbody td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+/* Row styling */
+.user-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.03); /* subtle stripe */
+}
+
+.user-table tbody tr:hover {
+  background-color: rgba(255,255,255,0.08);
+}
+
+/* View button inside table */
+.btn-view {
+  display: inline-block;
+  background-color: #071248;
+  color: white;
+  padding: 0.55rem 1.15rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  text-align: center;
+  min-width: 90px;
+}
+
+.btn-view:hover,
+.btn-view:focus {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13,110,253,0.35);
+  outline: none;
+}
+/* ────────────────────────────────────────────────
+   User Detail Page
+   ──────────────────────────────────────────────── */
+.user-detail {
+  padding: 2rem 1rem 4rem;
+  background: linear-gradient(135deg, #0a1f44 0%, #071531 100%);
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  font-weight: 600;
+  padding: 0.75rem 1.8rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.back-btn:hover {
+  background: #0d6efd;
+  color: white;
+  transform: translateX(-5px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.35);
+}
+
+.detail-card {
+  background: rgba(26, 43, 95, 0.92);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.55);
+  border: 1px solid rgba(13, 110, 253, 0.25);
+  backdrop-filter: blur(8px);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.detail-card h1 {
+  background: linear-gradient(135deg, #071248, #6610f2);
+  color: white;
+  margin: 0;
+  padding: 2.8rem 2rem 2rem;
+  font-size: 2.6rem;
+  text-align: center;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.45);
+}
+
+.info {
+  padding: 2.5rem 2.5rem 3rem;
+}
+
+.info p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.info p:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.info strong {
+  color: #a5b4fc;
+  min-width: 130px;
+  font-weight: 600;
+}
+
+.info p span:not(strong) {
+  font-weight: 500;
+  color: #e0e0e0;
+  text-align: right;
+  flex: 1;
+}
+
+/* ────────────────────────────────────────────────
+   Responsive Design
+   ──────────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .display-4 { font-size: 3.8rem; }
+  .hero { min-height: 90vh; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 70px;
+  }
+
+  .navbar {
+    padding: 1rem 6%;
+    flex-wrap: wrap;
+  }
+
+  .links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero .row {
+    flex-direction: column-reverse;
+  }
+
+  .hero img {
+    margin: 3rem auto 1.5rem;
+    max-width: 90%;
+  }
+
+  .btn-hero {
+    width: 100%;
+    max-width: 380px;
+    margin: 1rem auto;
+  }
+
+  .detail-card h1 {
+    font-size: 2.2rem;
+    padding: 2.2rem 1.8rem 1.8rem;
+  }
+
+  .info p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .info strong {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .display-4 { font-size: 2.6rem; }
+  .lead { font-size: 1.15rem; }
+  .navbar { padding: 1rem 5%; }
+  .user-detail { padding: 5rem 1rem 3rem; }
+}
