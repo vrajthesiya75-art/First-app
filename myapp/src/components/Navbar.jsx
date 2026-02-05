@@ -17,6 +17,7 @@ export default function Navbar() {
           Home
         </NavLink>
         <NavLink to="/users">Users</NavLink>
+        <NavLink to="/staff">staff</NavLink>        
       </div>
     </nav>
   );

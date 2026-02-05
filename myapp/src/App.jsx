@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NotFound from "./components/404NotFound";
+import StaffList from "./components/StaffList";
+import NewStaffForm from "./components/NewStaffForm";
 
 import Home from "./pages/Home";
 import UserList from "./pages/UserList";
@@ -33,6 +35,19 @@ function App() {
             path="/users/:id"
             element={<UserDetail users={users} />} // pass for detail page
           />
+          <Route 
+            path="/staff" 
+            element={<StaffList />} 
+          />
+          <Route 
+            path="/new-staff" 
+            element={<NewStaffForm />} 
+          />
+          <Route 
+            path="/edit-staff/:id" 
+            element={<NewStaffForm isEdit />} 
+          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
