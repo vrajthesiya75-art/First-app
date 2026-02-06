@@ -14,7 +14,8 @@ body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: #e0e0e0;
-  background-color: #0a1f44;
+  background-color: white;
+  color: var(--dark);
   min-height: 100vh;
   padding-top: var(--navbar-height, 80px); /* Prevents content from being hidden under fixed navbar */
 }
@@ -40,6 +41,9 @@ h1, h2, h3 {
   font-weight: 700;
   color: white;
   line-height: 1.2;
+}
+.hero-title,h1{
+  color: white !important;
 }
 
 .display-4 {
@@ -190,13 +194,19 @@ h1, h2, h3 {
    Footer
    ──────────────────────────────────────────────── */
 footer {
-  background-color: var(--dark);
+ 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;   /* dark background as in your design */
   color: #aaa;
   text-align: center;
-  position: relative;
-  padding: 2.5rem 1rem;
+  padding: 1.2rem 1rem;
   font-size: 0.95rem;
-  margin-top: auto;
+  z-index: 900;                /* below navbar but above content if needed */
+  border-top: 1px solid #333;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
 }
 
 /* ────────────────────────────────────────────────
@@ -245,23 +255,30 @@ footer {
   overflow-x: auto;
   margin: 2rem 0;
   border-radius: 12px;
+  padding-bottom: 5%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.user-list ,h1{ 
+  color: black !important;
 }
 
 /* Main table */
 .user-table {
-  width: 100%;
-  min-width: 700px;                /* prevents columns from collapsing too much */
+  width: 80vw;
+  margin : auto;
+  min-width: 700px;             
   border-collapse: separate;
   border-spacing: 0;
-  background: #1a2b5f;             /* solid dark background - better contrast */
+  background: white; 
+  color: black;       
+  border: 3px solid black;     
   border-radius: 12px;
   overflow: hidden;
 }
 
 /* Table header */
 .user-table thead th {
-  background-color: #071248;
+  background-color: #0d6efd;
   color: white;
   font-weight: 600;
   text-transform: uppercase;
@@ -269,15 +286,14 @@ footer {
   letter-spacing: 0.6px;
   text-align: left;
   padding: 16px 18px;
-  border-bottom: 2px solid #071248;
+  border-bottom : 3px solid black;
 }
 
 /* Table body cells */
 .user-table tbody td {
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: #e0e0e0;
-  font-size: 1rem;
+  padding: 5px 7px;
+  border-bottom: 2px solid black ;
+  color: black;
 }
 
 /* Row styling */
@@ -296,7 +312,7 @@ footer {
 /* View button inside table */
 .btn-view {
   display: inline-block;
-  background-color: #071248;
+  background-color: #0d6efd;
   color: white;
   padding: 0.55rem 1.15rem;
   border-radius: 8px;

@@ -25,15 +25,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home users={users} setUsers={setUsers} />}
+            element={<Home />}
           />
           <Route
             path="/users"
-            element={<UserList users={users} setUsers={setUsers} />} // pass to list too (optional)
+            element={<UserList />} // pass to list too (optional)
           />
           <Route
             path="/users/:id"
-            element={<UserDetail users={users} />} // pass for detail page
+            element={<UserDetail />} // pass for detail page
           />
           <Route 
             path="/staff" 

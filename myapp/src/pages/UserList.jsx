@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
+import { mockUsers } from "../data/mockUsers";
 
-export default function UserList({ users }) {
+export default function UserList() {
+  // const [users] = useState(mockUsers); // ← shared state here!
   return (
     <div className="user-list">
       <h1>All Users</h1>
 
-      {users.length === 0 ? (
+      {mockUsers.length === 0 ? (
+        // {users.length === 0 ? (
         <p>No users yet. Add someone from Home page!</p>
       ) : (
         <div className="table-container">
           <table className="user-table">
             <thead>
-              <tr>
+              <tr >
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -22,8 +25,8 @@ export default function UserList({ users }) {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
+              {mockUsers.map((user) => (
+                <tr key={user.id} >
                   <td data-label="ID">{user.id}</td>
                   <td data-label="Name">{user.name}</td>
                   <td data-label="Email">{user.email}</td>

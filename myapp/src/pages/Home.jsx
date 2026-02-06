@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <section className="hero text-white">
         <div className="container">
-          <h1 className="display-4 fw-bold text-center mb-4">
+          <h1 className="hero-title display-4 fw-bold text-center mb-4">
             Guardiansman Security Agency
           </h1>
 

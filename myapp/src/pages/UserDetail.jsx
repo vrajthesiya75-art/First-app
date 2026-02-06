@@ -1,11 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import NotFound from "../components/404NotFound";
+import { mockUsers } from "../data/mockUsers";
 
-export default function UserDetail({ users }) {
+export default function UserDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const user = users.find((u) => u.id === Number(id ));
+  const user = mockUsers.find((u) => u.id === Number(id ));
 
   if (!user) {
     return <div className="loading">
