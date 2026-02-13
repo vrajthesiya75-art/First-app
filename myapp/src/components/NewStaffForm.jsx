@@ -12,7 +12,6 @@ const NewStaffForm = ({ isEdit = false }) => {
   });
 
   const [errors, setErrors] = useState({});
-
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -43,19 +42,24 @@ const NewStaffForm = ({ isEdit = false }) => {
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email format';
+
+    if (!formData.age.trim()) { newErrors.age = 'Age is required';} 
+    else if (isNaN(formData.age) || Number(formData.age) <= 0) {
+    newErrors.age = 'Enter a valid age';}
+
+    if (!formData.city.trim()) {newErrors.city = 'City is required';}
     if (!formData.role) newErrors.role = 'Please select a role';
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
  const handleSubmit = () => {
-  console.log("handleSubmit called");                     // ← must appear first
+  console.log("handleSubmit called");                   
 
   if (!validateForm()) {
-    console.log("Validation failed", errors);
-    return;
-  }
-
+  return; 
+}
   console.log("Form is valid. Current formData:", formData);
 
   let storedData = JSON.parse(localStorage.getItem('staff')) || [];
@@ -66,7 +70,7 @@ const NewStaffForm = ({ isEdit = false }) => {
       staff.id === parseInt(id)
         ? { ...formData, id: parseInt(id) }
         : staff
-    );
+    );  
   } else {
     const newId = storedData.length > 0
       ? Math.max(...storedData.map((s) => s.id)) + 1
@@ -79,7 +83,7 @@ const NewStaffForm = ({ isEdit = false }) => {
   localStorage.setItem('staff', JSON.stringify(storedData));
   console.log("SAVE EXECUTED → localStorage.setItem called");
 
-  // Check immediately after save
+  // Check immediately after save y
   const afterSave = localStorage.getItem('staff');
   console.log("localStorage right after save:", afterSave ? JSON.parse(afterSave) : "EMPTY");
 
@@ -105,7 +109,7 @@ const NewStaffForm = ({ isEdit = false }) => {
     fontSize: '16px',
     outline: 'none',
     transition: 'border-color 0.2s, box-shadow 0.2s',
-    boxShadow: hasError ? '0 0 0 3px rgba(220, 53, 69, 0.25)' : 'none',
+    boxShadow: hasError ? '0 0 0 3px rgba(255, 2, 27, 0.25)' : 'none',
     ':focus': {
       borderColor: hasError ? '#dc3545' : '#0d6efd',
       boxShadow: hasError
@@ -176,8 +180,9 @@ const NewStaffForm = ({ isEdit = false }) => {
             onChange={handleChange}
             placeholder="25"
             maxLength={2}
-            style={inputStyle(false)}
+            style={inputStyle(errors.age)}
           />
+           {errors.age && <div style={errorStyle}>{errors.age}</div>}
         </div>
 
         {/* City */}
@@ -189,8 +194,9 @@ const NewStaffForm = ({ isEdit = false }) => {
             value={formData.city}
             onChange={handleChange}
             placeholder="Ahmedabad"
-            style={inputStyle(false)}
+            style={inputStyle(errors.city)}
           />
+           {errors.city && <div style={errorStyle}>{errors.city}</div>}
         </div>
 
         {/* Role */}

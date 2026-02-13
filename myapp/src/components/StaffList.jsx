@@ -58,7 +58,7 @@ const StaffList = () => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '90vw', margin: '0 auto', position: 'relative' }}>
+    <div style={{ padding: '20px', maxWidth: '90vw',paddingBottom: '5%', margin: '0 auto', position: 'relative' }}>
       <div
         style={{
           display: 'flex',
